@@ -50,25 +50,33 @@ public class DataAccess {
     }
 
 
-    private File openFile() throws NullPointerException {
+    private File openFile() {
         File directory = new File(PATH);
         File file = null;
 
         JFileChooser jFileChooser = new JFileChooser();
         jFileChooser.setCurrentDirectory(directory);
         jFileChooser.setFileFilter(new FileNameExtensionFilter("Adressbuch", "xml"));
-        jFileChooser.showSaveDialog(null);
 
-        if (!jFileChooser.getSelectedFile().exists()) {
-            try {
-                file = chooseFile(jFileChooser);
-            } catch (IOException e) {
-                e.printStackTrace();
-                JOptionPane.showMessageDialog(null, "Das XML konnte nicht erstellt werden", "JAXB Fehler", JOptionPane.ERROR_MESSAGE);
+
+        jFileChooser.showDialog(null, "Laden/Schreiben");
+
+        try {
+            if (!jFileChooser.getSelectedFile().exists()) {
+                try {
+                    file = chooseFile(jFileChooser);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    JOptionPane.showMessageDialog(null, "Das XML konnte nicht erstellt werden", "JAXB Fehler", JOptionPane.ERROR_MESSAGE);
+                }
+            } else {
+                file = jFileChooser.getSelectedFile();
             }
-        } else {
-            file = jFileChooser.getSelectedFile();
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Schließen geht ohne speichern nicht, sorry. Works as intented");
         }
+
         return file;
     }
 

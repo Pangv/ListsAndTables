@@ -1,7 +1,12 @@
 package de.lebk.address_book;
 
 import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlType;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.GregorianCalendar;
 
 /**
@@ -13,7 +18,7 @@ public class Contact {
     String firstName;
     String lastName;
     String birthDate;
-    byte age;
+    int age;
 
 
     // Contact Info
@@ -21,16 +26,16 @@ public class Contact {
     String mail;
     String city;
     String street;
-    String houseNumber;
+    int houseNumber;
 
     public Contact() {
     }
 
-    public Contact(String firstName, String lastName, String birthDate, byte age, String telephone, String mail, String city, String street, String houseNumber) {
+    public Contact(String firstName, String lastName, String birthDate, String telephone, String mail, String city, String street, int houseNumber) throws ParseException {
         this.firstName = firstName;
         this.lastName = lastName;
         this.birthDate = birthDate;
-        this.age = age;
+        this.age = getAge();
         this.telephone = telephone;
         this.mail = mail;
         this.city = city;
@@ -39,9 +44,8 @@ public class Contact {
     }
 
     @Override
-    @XmlAttribute(name = "attr")
     public String toString() {
-        return this.getFullName() + " " + getAge();
+        return super.toString() + " " + this.getFullName();
     }
 
     public String getFullName() {
@@ -72,7 +76,16 @@ public class Contact {
         this.birthDate = birthDate;
     }
 
-    public byte getAge() {
+    public int getAge() throws ParseException {
+        DateFormat df = new SimpleDateFormat("dd.MM.yyyy");
+        Date date = df.parse(birthDate);
+        Calendar calendar = new GregorianCalendar();
+        calendar.setTime(date);
+
+        int currentDate = new GregorianCalendar().get(Calendar.DATE);
+        int birthDate = calendar.get(Calendar.DATE);
+
+        age = (currentDate - birthDate);
         return age;
     }
 
@@ -112,11 +125,11 @@ public class Contact {
         this.street = street;
     }
 
-    public String getHouseNumber() {
+    public int getHouseNumber() {
         return houseNumber;
     }
 
-    public void setHouseNumber(String houseNumber) {
+    public void setHouseNumber(int houseNumber) {
         this.houseNumber = houseNumber;
     }
 }

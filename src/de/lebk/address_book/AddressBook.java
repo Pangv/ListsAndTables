@@ -4,6 +4,7 @@ import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,7 +15,8 @@ import java.util.List;
 public class AddressBook {
 
     private static AddressBook instance = null;
-    private String title = "Mein kleines Adressbuch";
+
+    private String title;
 
     @XmlElementWrapper(name = "contacts")
     @XmlElement(name = "contact")
@@ -32,14 +34,18 @@ public class AddressBook {
 
     }
 
-    public void addContact(String firstName, String lastName, String birthDate, byte age) {
-        contacts.add(new Contact());
+    public static void setInstance(AddressBook instance) {
+        AddressBook.instance = instance;
     }
+
+    public void addContact(String firstName, String lastName, String birthDate, String telephone, String mail, String city, String street, int streetNumber) throws ParseException {
+        contacts.add(new Contact(firstName, lastName, birthDate, telephone, mail, city, street, streetNumber));
+    }
+
 
     public void addContact(Contact contact) {
         contacts.add(contact);
     }
-
 
     @XmlAttribute
     public String getTitle() {
