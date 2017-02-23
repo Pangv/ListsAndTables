@@ -18,7 +18,7 @@ public class StartHere {
 
     public static void main(String[] args) {
 
-        JOptionPane.showMessageDialog(null, "Wähle den Speicherpunkt deines Adressbuchs");
+        //JOptionPane.showMessageDialog(null, "Wähle den Speicherpunkt deines Adressbuchs");
         try {
             AddressBook.setInstance(DataAccess.getInstance().readXML());
 
