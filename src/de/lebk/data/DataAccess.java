@@ -19,7 +19,7 @@ public class DataAccess {
     private static JAXBContext jaxbContext;
 
     private final String PATH = System.getProperty("user.home");
-    private final File ADDRESS_BOOK_XML = openFile();
+    private final File ADDRESS_BOOK_XML = new File("./exampledata/dataset.xml");
 
     private DataAccess() {
 
