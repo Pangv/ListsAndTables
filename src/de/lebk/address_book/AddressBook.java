@@ -64,6 +64,6 @@ public class AddressBook {
         return contacts.get(index);
     }
 
-    //TODO return the Contact which equals a clicked "Firstname and Lastname" combo
+
 
 }

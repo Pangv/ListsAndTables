@@ -45,7 +45,7 @@ public class Contact {
 
     @Override
     public String toString() {
-        return super.toString() + " " + this.getFullName();
+        return this.getFullName();
     }
 
     public String getFullName() {

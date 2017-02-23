@@ -83,13 +83,15 @@ public class MyContactDetails extends JPanel {
 
     }
 
-    public void fillDetails(String fullname, String birthDate, String age, String tel, String mail, String city, String streetAddress) {
-        lblFullName.setText(fullname);
-        lblBirthDate.setText(birthDate);
-        lblAge.setText(age);
-        txtfTelephone.setText(tel);
-        txtfMail.setText(mail);
-        txtfCity.setText(city);
-        txtfStreetAddress.setText(streetAddress);
+
+    public void fillDetails(String fullName, String birthDate, String age, String telephone, String mail, String city, String streetAddress) {
+        this.lblFullName.setText(fullName);
+        this.lblBirthDate.setText(birthDate);
+        this.lblAge.setText(age);
+        this.txtfTelephone.setText(telephone);
+        this.txtfMail.setText(mail);
+        this.txtfStreetAddress.setText(streetAddress);
+
+
     }
 }
