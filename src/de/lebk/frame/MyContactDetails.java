@@ -82,4 +82,14 @@ public class MyContactDetails extends JPanel {
 
 
     }
+
+    public void fillDetails(String fullname, String birthDate, String age, String tel, String mail, String city, String streetAddress) {
+        lblFullName.setText(fullname);
+        lblBirthDate.setText(birthDate);
+        lblAge.setText(age);
+        txtfTelephone.setText(tel);
+        txtfMail.setText(mail);
+        txtfCity.setText(city);
+        txtfStreetAddress.setText(streetAddress);
+    }
 }
