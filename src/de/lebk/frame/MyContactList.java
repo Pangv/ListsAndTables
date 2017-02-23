@@ -12,16 +12,21 @@ import java.util.Iterator;
 /**
  * @author sopaetzel
  */
-public class MyContactList extends JPanel implements ListSelectionListener {
+public class MyContactList extends JPanel {
 
     JList myLittleList;
     JScrollPane scrollPaneList;
 
+    MyContactDetails myContactDetails = new MyContactDetails();
+
     public MyContactList() {
         this.setLayout(new GridLayout(0, 2));
         this.setName("Kontaktliste");
+
+        this.initComponent();
+
         this.add(scrollPaneList);
-        this.add(new MyContactDetails());
+        this.add(myContactDetails);
     }
 
 
@@ -32,10 +37,30 @@ public class MyContactList extends JPanel implements ListSelectionListener {
         myLittleList.setModel(getMyModel());
 
         scrollPaneList.setViewportView(myLittleList);
+
+
+        myLittleList.addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                Contact contact =  (Contact) myLittleList.getSelectedValue();
+                try {
+                    myContactDetails.fillDetails(contact.getFullName(), contact.getBirthDate(), (contact.getAge() + ""),
+                            contact.getTelephone(), contact.getMail(),
+                            contact.getCity(), contact.getStreet() + " " + contact.getHouseNumber());
+                } catch (Exception e1) {
+                    e1.printStackTrace();
+                    JOptionPane.showMessageDialog(null, "Also wirklich du weißt doch, dass man Exception nicht wirft....");
+                }
+
+            }
+        });
+
     }
 
     private DefaultListModel getMyModel() {
-        DefaultListModel model = (DefaultListModel) myLittleList.getModel();
+        DefaultListModel model = new DefaultListModel();
+
+
 
         //for Each
 //        for(Contact contact : AddressBook.getInstance().getContacts()){
@@ -52,8 +77,5 @@ public class MyContactList extends JPanel implements ListSelectionListener {
         return model;
     }
 
-    @Override
-    public void valueChanged(ListSelectionEvent e) {
 
-    }
 }

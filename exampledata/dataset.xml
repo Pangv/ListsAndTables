@@ -1001,5 +1001,25 @@
             <street>Donald</street>
             <telephone>63-(454)802-6339</telephone>
         </contact>
+        <contact>
+            <birthDate>23.05.1992</birthDate>
+            <city>Berlin</city>
+            <firstName>Oliver</firstName>
+            <houseNumber>1</houseNumber>
+            <lastName>Pätzel</lastName>
+            <mail>s@o.de</mail>
+            <street>Am Bahnhof</street>
+            <telephone>0123-45-67-88-99</telephone>
+        </contact>
+        <contact>
+            <birthDate>23.05.1992</birthDate>
+            <city>Berlin</city>
+            <firstName>Oliver</firstName>
+            <houseNumber>1</houseNumber>
+            <lastName>Pätzel</lastName>
+            <mail>s@o.de</mail>
+            <street>Am Bahnhof</street>
+            <telephone>0123-45-67-88-99</telephone>
+        </contact>
     </contacts>
 </addressBook>
