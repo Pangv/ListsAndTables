@@ -76,6 +76,7 @@ public class Contact {
         this.birthDate = birthDate;
     }
 
+    // TODO korrigiert die Alterberechnung
     public int getAge() throws ParseException {
         DateFormat df = new SimpleDateFormat("dd.MM.yyyy");
         Date date = df.parse(birthDate);

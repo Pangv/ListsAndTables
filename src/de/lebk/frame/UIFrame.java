@@ -62,7 +62,6 @@ public class UIFrame extends JFrame {
     private void onCloseOperation(JFrame frame) {
         try {
             DataAccess.getInstance().writeXML(AddressBook.getInstance());
-            System.out.println("writing");
             frame.dispose();
             System.exit(0);
         } catch (IllegalArgumentException e) {
